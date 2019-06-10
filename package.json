@@ -1,0 +1,31 @@
+{
+  "name": "tic80-js",
+  "version": "0.0.1",
+  "description": "Bundle your TIC-80 carts with ES6 JavaScript",
+  "main": "src/TIC80JS.js",
+  "bin": {
+    "tic80-js": "bin/tic80-js.js"
+  },
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "author": "Rob Loach",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "comments-parser": "^1.0.0",
+    "extend-shallow": "^3.0.2",
+    "rollup": "^1.14.4",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.0.1",
+    "rollup-plugin-terser": "^5.0.0",
+    "temp-write": "^4.0.0",
+    "yargs": "^13.2.4"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
