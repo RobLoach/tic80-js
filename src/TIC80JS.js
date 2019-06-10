@@ -128,9 +128,10 @@ class TIC80JS {
 		const bundle = await rollup.rollup(options);
 
 		// Build the output options.
-		//await bundle.write(options.output)
+		await bundle.write(options.output)
 
 		// Get the generated code.
+		/*
 		const { output } = await bundle.generate(options.output);
 
 		this.code = ''
@@ -140,6 +141,7 @@ class TIC80JS {
 			}
 		}
 		return this.code
+		*/
 	}
 
 	async run() {
