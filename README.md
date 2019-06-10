@@ -5,12 +5,12 @@ Bundle and run your [TIC-80](https://tic.computer) ES6 JavaScript carts.
 ## Installation
 
 ``` sh
-npm i tic80-js --global
+npm i tic80-js --save
 ```
 
 ## Usage
 
-1. Create a JavaScript TIC-80 *cart.js* with ES6:
+1. Create a JavaScript TIC-80 *index.js* with ES6:
 	``` js
 	// title:  TIC-80 JS Simple Test
 	// author: Rob Loach
@@ -32,11 +32,11 @@ npm i tic80-js --global
 	}
 	```
 
-2. Create a [*sprites.gif*](tests/simple/sprites.gif) that would be used for the game.
+2. Create a [*sprites.gif*](tests/simple/sprites.gif) in the same directory that would be used for the game.
 
 3. Build and run the game through TIC-80 JS:
     ```
-    tic80-js cart.js
+    tic80-js index.js
     ```
 
 4. To export the *cart.tic*, press escape to load the console, and use `save`.
