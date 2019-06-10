@@ -1,4 +1,5 @@
 .local
+dist
 cart.tic
 package-lock.json
 node_modules

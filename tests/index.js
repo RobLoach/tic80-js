@@ -5,6 +5,6 @@ describe('simple', function() {
 	it('builds the correct output', async function() {
 		const tic = new TIC80JS('tests/simple')
 		const output = await tic.build()
-		assert(output.includes('function TIC(){btn(0)'))
+		assert(output.includes('function TIC() {\n    if (btn(0)) {'))
 	});
 });

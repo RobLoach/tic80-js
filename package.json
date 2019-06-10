@@ -11,6 +11,9 @@
   },
   "author": "Rob Loach",
   "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
   "dependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",

@@ -55,7 +55,7 @@ class TIC80JS {
 			try {
 				comments = commentsParser(source);
 			}
-			catch {
+			catch (error) {
 				// Nothing
 			}
 			for (let comment of comments) {
@@ -77,7 +77,7 @@ class TIC80JS {
 		return output
 	}
 
-	async build() {
+	async build(compress = false) {
 		let options = this.constructOptions({
 			input: this.input
 		})
@@ -103,8 +103,8 @@ class TIC80JS {
 				babelrc: false,
 				comments: false,
 				sourceMap: false,
-				minified: true,
-				compact: true,
+				minified: compress,
+				compact: compress,
 				presets: [
 					[
 						'@babel/preset-env', {
@@ -118,16 +118,16 @@ class TIC80JS {
 			terser({
 				sourcemap: false,
 				output: {
-					beautify: false,
+					beautify: !compress,
 					preamble: preamble
-				}
+				},
+				compress: compress
 			})
 		]
 
 		const bundle = await rollup.rollup(options);
 
 		// Build the output options.
-		//let output = options.output
 		//await bundle.write(options.output)
 
 		// Get the generated code.
@@ -157,13 +157,14 @@ class TIC80JS {
 		}
 
 		// Prepare the cart output.
-		if (!fs.existsSync('cart.tic')) {
-			fs.writeFileSync('cart.tic', '')
+		if (!fs.existsSync('dist/cart.tic')) {
+			fs.writeFileSync('dist/cart.tic', '')
 		}
 
 		// Construct the command line arguments.
-		const filePath = tempWrite.sync(this.code)
-		let command = 'tic80 cart.tic -code ' + filePath
+		//const filePath = tempWrite.sync(this.code)
+		const filePath = 'dist/cart.js'
+		let command = 'tic80 dist/cart.tic -code ' + filePath
 		if (spritepath) {
 			command += ' -sprites ' + spritepath
 		}
