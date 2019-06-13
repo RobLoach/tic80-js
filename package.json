@@ -9,6 +9,10 @@
   "scripts": {
     "test": "mocha tests"
   },
+  "files": [
+    "bin",
+    "src"
+  ],
   "author": "Rob Loach",
   "license": "MIT",
   "engines": {
