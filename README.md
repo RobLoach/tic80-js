@@ -40,3 +40,7 @@ npm i tic80-js --save
     ```
 
 4. To export the *cart.tic*, press escape to load the console, and use `save`.
+
+## Examples
+
+There are some [examples](examples) that are available that give some sense of how TIC-80 JS could be used.
