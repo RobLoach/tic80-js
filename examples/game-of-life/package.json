@@ -2,13 +2,13 @@
   "name": "tic80-game-of-life",
   "version": "0.0.1",
   "scripts": {
-    "test": "tic80-js"
+    "test": "tic80-js --compress=false"
   },
   "author": "Rob Loach",
   "license": "MIT",
   "dependencies": {
     "game-of-life-logic": "^1.0.0",
-    "tic80-js": "*"
+    "tic80-js": "../.."
   },
   "engines": {
     "node": ">=11"

@@ -7,6 +7,6 @@ describe('simple', function() {
 		const tic = new TIC80JS('tests/simple')
 		const output = await tic.build()
 		const code = fs.readFileSync('dist/cart.js', 'utf8')
-		assert(code.includes('function TIC() {\n    if (btn(0)) {'))
+		assert(code.includes('function TIC(){'))
 	});
 });

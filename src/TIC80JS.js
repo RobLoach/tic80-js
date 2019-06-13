@@ -3,6 +3,7 @@ const path = require('path')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const commonjs = require('rollup-plugin-commonjs')
+const json = require('rollup-plugin-json')
 const resolve = require('rollup-plugin-node-resolve')
 const builtins = require('rollup-plugin-node-builtins')
 const { terser } = require('rollup-plugin-terser')
@@ -77,7 +78,7 @@ class TIC80JS {
 		return output
 	}
 
-	async build(compress = false) {
+	async build(compress = true) {
 		let options = this.constructOptions({
 			input: this.input
 		})
@@ -90,6 +91,10 @@ class TIC80JS {
 		}
 		preamble += 'exports=global=module={};'
 		options.plugins = [
+			json({
+				compact: compress,
+				indent: compress ? '' : '  '
+			}),
 			builtins(),
 			resolve({
 				mainFields: ['module', 'main'],
@@ -121,7 +126,14 @@ class TIC80JS {
 					beautify: !compress,
 					preamble: preamble
 				},
-				compress: compress
+				compress: compress ? {
+				} : false,
+				mangle: compress ? {
+					reserved: [
+						'TIC'
+					],
+					toplevel: false
+				} : false
 			})
 		]
 

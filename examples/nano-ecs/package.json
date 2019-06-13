@@ -2,15 +2,13 @@
   "name": "tic80-js-ecs-test",
   "version": "0.0.1",
   "scripts": {
-    "test": "tic80-js"
+    "test": "tic80-js --compress=false"
   },
   "author": "Rob Loach",
   "license": "MIT",
   "dependencies": {
-    "clamp": "^1.0.1",
-    "ecs": "^0.1.0",
     "nano-ecs": "^2.3.0",
-    "tic80-js": "*"
+    "tic80-js": "../.."
   },
   "engines": {
     "node": ">=11"
