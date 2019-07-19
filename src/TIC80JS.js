@@ -51,6 +51,10 @@ class TIC80JS {
 			indent: false
 		}
 		output.output = extendShallow({}, defaultOutput, options.output || {})
+
+		// Target
+		output.target = options.target;
+
 		return output
 	}
 
