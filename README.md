@@ -5,7 +5,7 @@ Bundle and run your [TIC-80](https://tic.computer) ES6 JavaScript carts.
 ## Installation
 
 ``` sh
-npm i tic80-js --save
+npm i tic80-js --save-dev
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ npm i tic80-js --save
 
 3. Build and run the game through TIC-80 JS:
     ```
-    tic80-js index.js
+    npx tic80-js index.js
     ```
 
 4. To export the *cart.tic*, press escape to load the console, and use `save`.

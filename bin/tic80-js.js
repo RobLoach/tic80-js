@@ -1,6 +1,15 @@
 #!/usr/bin/env node
 
+const fs = require('fs')
+const path = require('path')
 const TIC80JS = require('..')
+const configFile = path.resolve('tic80jsconf.js'); 
+let config = {};
+if(fs.existsSync(configFile)) {
+	config = require(configFile);
+}
+
+console.log('Using defaults from tic80jsconf.js:', config);
 
 require('yargs')
 	.scriptName('tic80-js')
@@ -9,12 +18,15 @@ require('yargs')
 			yargs.positional('input', {
 				describe: 'The input file to build',
 				type: 'string',
-				default: '.'
+				default: config.input || '.'
 			})
 		},
 		async (argv) => {
-			const tic = new TIC80JS(argv.input)
-			await tic.build(argv.compress)
+			config.input = argv.input
+			config.target = argv.target
+			config.compact = argv.compress
+			const tic = new TIC80JS(config)
+			await tic.build()
 			await tic.run()
 		}
 	)
@@ -22,6 +34,12 @@ require('yargs')
 		describe: 'Whether or not to compress the output file.',
 		type: 'boolean',
 		alias: 'c',
-		default: true
+		default: (typeof config.compact !== 'undefined')?config.compact:true
+	})
+	.option('target', {
+		describe: 'Target platform for the output file.',
+		choices: ['tic80', 'tic80pro', 'tic80uwp'],
+		alias: 't',
+		default: config.target || 'tic80'
 	})
 	.argv
