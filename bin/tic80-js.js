@@ -6,10 +6,10 @@ const TIC80JS = require('..')
 const configFile = path.resolve('tic80jsconf.js'); 
 let config = {};
 if(fs.existsSync(configFile)) {
-	require(configFile);
+	config = require(configFile);
 }
 
-console.log(config);
+console.log('Using defaults from tic80jsconf.js:', config);
 
 require('yargs')
 	.scriptName('tic80-js')

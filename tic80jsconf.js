@@ -7,7 +7,7 @@ module.exports = {
     * thus the tic80upw option is not useful and may be removed in a future version
     * Default: 'tic80'
     */
-    version:'tic80',
+    target: 'tic80',
     /* compact: try to make the build js as small as possible
     * If true, the source will be compressed, minimized, and have as much whitespace 
     * removed as possible.
