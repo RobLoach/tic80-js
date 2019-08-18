@@ -91,7 +91,7 @@ class TIC80JS {
 
 	cartData(file) {
 		let output = {}
-		let toGrab = ['TILES', 'SPRITES', 'PALETTE', 'WAVES', 'SFX', 'PATTERNS', 'TRACKS']
+		let toGrab = ['TILES', 'SPRITES', 'PALETTE', 'MAP', 'WAVES', 'SFX', 'PATTERNS', 'TRACKS']
 		if (fs.existsSync(file)) {
 			let source = fs.readFileSync(file, 'utf-8');
 			let comments = []
