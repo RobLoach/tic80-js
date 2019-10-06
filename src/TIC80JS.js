@@ -120,7 +120,7 @@ class TIC80JS {
 								bankNum = line[grab.length+1]
 								// Bank 0 doesn't get a number, so if the character
 								// we just got is the > set bankNum back to ''
-								if (bankNum == '>') {bankNum == ''}
+								if (bankNum == '>') {bankNum = ''}
 								// Add a slot for this block and bank to the output
 								output[`${blockType}${bankNum}`] = [];
 								// This is the first line - we don't want to process it

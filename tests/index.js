@@ -20,6 +20,7 @@ describe('banks', function() {
 		let tag = `// <PALETTE>`
 		console.log(`Checking for ${tag}`)
 		assert(code.includes(tag))
+		assert(!code.includes(`${tag}>`))
 		for(let i=1; i<=7; i++) {
 			tag = `// <PALETTE${i}>`
 			console.log(`Checking for ${tag}`)
