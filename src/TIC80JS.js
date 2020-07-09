@@ -91,7 +91,7 @@ class TIC80JS {
 
 	cartData(file) {
 		let output = {}
-		let toGrab = ['TILES', 'SPRITES', 'PALETTE', 'WAVES', 'SFX', 'PATTERNS', 'TRACKS']
+		let toGrab = ['TILES', 'SPRITES', 'PALETTE', 'MAP', 'WAVES', 'SFX', 'PATTERNS', 'TRACKS']
 		if (fs.existsSync(file)) {
 			let source = fs.readFileSync(file, 'utf-8');
 			let comments = []
@@ -102,7 +102,7 @@ class TIC80JS {
 				// Nothing
 			}
 			const states = { OUTSIDE: 1, FIRSTLINE: 2, INBLOCK: 3};
-			let blockType = '', state = states.OUTSIDE;
+			let blockType = '', bankNum = '', state = states.OUTSIDE;
 			for (let comment of comments) {
 				// TIC-80 PRO Data comments are all single-line comments
 				let line = comment.lines[0];
@@ -114,7 +114,15 @@ class TIC80JS {
 							if (line.startsWith("<" + grab)) {
 								// We found one - init working variables
 								blockType = grab;
-								output[blockType] = [];
+								// TIC-80 PRO Bank numbers follow the block type
+								// Since there are only 8 of them, we only need to
+								// capture a single digit
+								bankNum = line[grab.length+1]
+								// Bank 0 doesn't get a number, so if the character
+								// we just got is the > set bankNum back to ''
+								if (bankNum == '>') {bankNum = ''}
+								// Add a slot for this block and bank to the output
+								output[`${blockType}${bankNum}`] = [];
 								// This is the first line - we don't want to process it
 								state = states.FIRSTLINE;
 							}
@@ -132,6 +140,7 @@ class TIC80JS {
 							if (line.startsWith("</" + grab)) {
 								// We are on the last line of a block - reset working variables
 								blockType = '';
+								bankNum = '';
 								// The next line will be outside this block - we want to start looking for the begining of the next block
 								state = states.OUTSIDE;
 							}
@@ -141,7 +150,7 @@ class TIC80JS {
 				}
 				// Now act on the current state
 				if(state == states.INBLOCK) {
-					output[blockType].push(line);
+					output[`${blockType}${bankNum}`].push(line);
 				}
 			}
 		}
