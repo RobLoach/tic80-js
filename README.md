@@ -44,3 +44,10 @@ npm i tic80-js --save-dev
 ## Examples
 
 There are some [examples](examples) that are available that give some sense of how TIC-80 JS could be used.
+
+## Other Solutions
+
+There are a few alternatives to tic80-js:
+
+- [tic-bundle](https://github.com/chronoDave/tic-bundle)
+- [scriptpacker](https://github.com/robloach/scriptpacker)
